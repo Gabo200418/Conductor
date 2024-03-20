@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Calculo de barrajes rigidos</h1>
+    <form action="/Urp_Ucw" method="POST">  <!-- Formulario que se enviará a la ruta '/multiplicar' utilizando el método POST -->
+        <button type="submit">Calculo de barrajes rigidos</button><br>
+        <h3>Parámetros del sistema</h3><br>
+        <label for="MVA">Potencia nominal (MVA):</label>
+        <input type="number" id="num1" step="any" name="num1" required><br> 
+        <label for="vN">Vn: Tension nominal del sistema f-f (kV):</label>
+        <input type="number" id="num2" step="any" name="num2" required><br> 
+        <label for="Up_1">Corriente nominal (A): {{r1}}<br>
+        <!-- <label for="Up_1">Corriente del secundario del trafo: {{r2}}<br> -->
+        <label for="vN">Factor de diseño (%).:</label>
+        <input type="number" id="num23" step="any" name="num23" required>
+        <label for="Up_1">Corriente de diseño (A): {{r3}}<br>
+        <label for="vN">A: Atura m.s.n.m.:</label>
+        <input type="number" id="num3" step="any" name="num3" required><label for="Up_1">{{r0}}<br>
+
+        <h3>Resistencia DC, perdida de calor por convección y radiación</h3>
+        <label for="vN">Ancho del conductor, m:</label>
+        <input type="number" id="num4" step="any" name="num4" required> <label for="Up_1">{{r00}}<br>
+        
+
+        <label for="vN">Alto del conductor, m:</label>
+        <input type="number" id="num5" step="any" name="num5" required><label for="Up_1">{{r01}}<br>
+        <label for="vN">C':is the conductivity as % IACS:</label>
+        <input type="number" id="num6" step="any" name="num6" required><br> 
+        <label for="vN">ε:Emissivity (extended outdoor exposure Aluminium):</label>
+        <input type="number" id="num7" step="any" name="num7" required><br> 
+
+        <label for="Up_1">Ac:is the cross-sectional area, m2 : {{r4}}<br>
+
+        <label for="vN">Ta: temperatura ambiente:</label>
+        <input type="number" id="num8" step="any" name="num8" required><br> 
+        <label for="vN">T2:is the conductor temperature, °C:</label>
+        <input type="number" id="num9" step="any" name="num9" required><br> 
+
+        <label for="Up_1">R: resistencia de DC,Ω/m : {{r5}} --<br>
+        <label for="Up_1">Av: is the vertical face surface area by unit length, m2/m : {{r6}}<br>
+        <label for="Up_1">Ah: is the horizontal face surface area by unit length, m2/m : {{r7}}<br>
+        <label for="Up_1">qcv: Forced Convection vertical : {{r8}}<br>
+        <label for="Up_1">qch: Forced Convection horizontal : {{r9}}<br>
+        <label for="Up_1">qcv: Natural Convection vertical : {{r10}} <br>
+        <label for="Up_1">qch: Natural Convection horizontal upward facing : {{r11}} <br>
+        <label for="Up_1">qch: Natural Convection horizontal downward facing : {{r12}}<br>
+        <label for="Up_1">qc: Forced Convection : {{r13}}<br>
+        <label for="Up_1">qc: Natural Convection, W/m : {{r14}} <br>
+        <label for="Up_1">qr: Radiation loss, W/m : {{r15}} <br>
+        <label for="Up_1">///// : {{r16}}<br>
+
+        <h3>Ganacia de Calor solar</h3>
+        <label for="vN">Latitud Norte del sitio (grados°):</label>
+        <input type="number" id="num10" step="any" name="num10" required><br> 
+        <label for="Up_1">Latitud Norte del sitio (rad) : {{r17}} <br>
+        <label for="vN">Hora del día (hr 24 horas):</label>
+        <input type="number" id="num11" step="any" name="num11" required><br> 
+        <label for="Up_1">He: Altura sobre el nivel del mar (msnm) : {{r18}} <br>
+        <label for="Up_1">w: Hour angle (rad): {{r19}} <br>
+        <label for="vN">N: Día del año:</label>
+        <input type="number" id="num12" step="any" name="num12" required><br>
+        <label for="Up_1">lambda: Declinación solar (rad) : {{r20}} <br>
+        <label for="Up_1">Variable de azimut solar (grados°) : {{r21}} <br>
+        <label for="Up_1">Constante de azimut solar (grados°): {{r22}} <br>
+
+        <label for="Up_1">Qs: Radiacion solar normal directa atmosfera limpia (W/m2): {{r23}} <br>
+        <label for="Up_1">Qs: Radiacion solar normal directa atmosfera industrial (W/m2): {{r24}} <br>
+        <label for="Up_1">A': Area proyectada del conductor por unidad de longitud (m2/m): {{r25}} <br>
+        <label for="Up_1">K: Factor de multiplicacion para altas altitudes: {{r26}} <br>
+        <label for="Up_1">Hc: Altitud del Sol (grados °): {{r27}} <br>
+        <label for="Up_1">Zc: Azimut del Sol (grados°): {{r28}} <br>
+        <label for="vN">Z1: Azimut del Conductor:</label>
+        <input type="number" id="num13" step="any" name="num13" required><br>
+        <label for="Up_1">θ: Angulo efectivo de incidencia del sol (rad): {{r29}} <br>
+        <label for="Up_1">Zc: θ: Angulo efectivo de incidencia del sol (grados°): {{r30}} <br> 
+        <label for="Up_1">qs: Calor ganado de la radiación solar W/m2: {{r31}} <br>
+        <label for="Up_1">/////: {{r32}} <br>  
+
+
+        <!-- Capacidad de Corriente -->
+        <h3>Capacidad de Corriente</h3>
+        <label for="vN">F: Coeficiente efecto piel:</label>
+        <input type="number" id="num14" step="any" name="num14" required><br>
+        <label for="Up_1">I: Capacidad de corriente (A): {{r33}} <br>
+   
+        <!-- Capacidad de Corriente de Cortocircuito -->
+        <h3>Capacidad de Corriente de Cortocircuito</h3>
+        <label for="Up_1">C: Constante (s0,5/mm2): {{r34}} <br>
+        <label for="Up_1">Ac:is the cross-sectional area, mm2: {{r35}} <br>
+        <label for="vN">t: Duracion de la falla (s):</label>
+        <input type="number" id="num15" step="any" name="num15" required><br>
+        <label for="vN">Ti: temperatura inicial conductor (°C):</label>
+        <input type="number" id="num16" step="any" name="num16" required><br>
+        <label for="vN">Tf: Temperatura final permitida del conductor (°C):</label>
+        <input type="number" id="num17" step="any" name="num17" required><br>
+        <label for="Up_1">Icc: Capacidad de corriente de corto (A): {{r36}} <br>
+    
+        <!-- Gradiente de Tensión -->
+        <h3>Gradiente de Tensión</h3>
+        <label for="Up_1">rc: Radio exterior conductor (cm): {{r37}} <br>
+        <label for="vN">Eo: Constante Empírica (kV/cm):</label>
+        <input type="number" id="num18" step="any" name="num18" required><br>
+        <label for="vN">m: Factor de irregularidad del conductor:</label>
+        <input type="number" id="num19" step="any" name="num19" required><br>
+        <label for="vN">C: Constante empirica (cm-1):</label>
+        <input type="number" id="num20" step="any" name="num20" required><br>
+        <label for="vN">To: Temperatura ambiente de referencia (°C):</label>
+        <input type="number" id="num21" step="any" name="num21" required><br>
+        <label for="Up_1">Da:  Densidad relativa del aire: {{r38}} <br>
+        <label for="Up_1">Ec: Gradiente de inicio corona (kV/cm): {{r39}} <br>
+
+        <!-- Gradiente de tensión el conductor -->
+        <H3>Gradiente de tensión el conductor</H3>
+        <label for="vN">h: Distancia desde el centro del conductor a tierra (cm):</label>
+        <input type="number" id="num22" step="any" name="num22" required><br>
+        <label for="vN">D: Distancia entre fases (cm):</label>
+        <input type="number" id="num23" step="any" name="num23" required><label for="Up_1">{{r04}}<br>
+        <label for="Up_1">he: Distancia equivalente del conductor a tierra 3 fases (cm): {{r40}} <br>
+        <label for="Up_1">d: Diametro del conductor (cm): {{r41}} <br>
+        <label for="Up_1">V: Tension nominal del sistema f-t (kV): {{r42}} <br>
+        <label for="Up_1">V1: 110% de la Tension nominal del sistema f-t (kV): {{r43}} <br>
+       
+        <label for="Up_1" class="import1">Ea: Gradiente de tensión promedio (kV/m): {{r44}} <br>
+        <label for="Up_1">Em: gradiente de tensión máxima (kV/m): {{r45}} <br>
+        <label for="Up_1">¿ Em  Ec ?: {{r46}} <br>
+        <!-- <button type="submit">Calculo de barrajes rigidos</button><br> -->
+
+            <!-- <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 215vh;
+                }
+            
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+            
+                h3 {
+                    margin-top: 20px;
+                    border-bottom: 1px solid #ccc;
+                    padding-bottom: 5px;
+                }
+            
+                label {
+                    margin-top: 10px;
+                    font-weight: bold;
+                    
+                }
+            
+                input {
+                    margin-bottom: 10px;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    width: 70px;
+
+                }
+            
+                button {
+                    margin-top: 20px;
+                    padding: 10px;
+                    background-color: #3498db;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            </style> -->
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                }
+                form {
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                h1{
+                text-align: center;
+                color: #ff0000;
+                }
+                h3 {
+                    background-color: #f2f2f2;
+                    padding: 5px;
+                    margin-top: 20px;
+                }
+                .import1{
+                    color: #c02d13;
+                    font-size: 20px;/* Puedes ajustar el valor según tus necesidades */
+                    /*font-size: 1.5em;  Este es un ejemplo de tamaño relativo */
+                }
+                label {
+                    display: block;
+                    margin-top: 10px;
+                }
+                input[type="number"] {
+                    width: 100%;
+                    padding: 5px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+                button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-left: 40%;
+                    
+                    
+                }
+                button:hover {
+                    background-color: #45a049;
+                
+                }
+            </style>
+    </form>    
+</body>
+</html>
